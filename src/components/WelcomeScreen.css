@@ -1,0 +1,161 @@
+
+.welcome-screen {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 30px 16px 70px;
+}
+
+.welcome-card {
+  width: min(100%, 540px);
+  padding: 35px;
+  background: rgba(15, 26, 42, 0.94);
+  border: 2px solid #ffd166;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow:
+    0 0 35px rgba(255, 209, 102, 0.15),
+    0 25px 70px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.welcome-icon {
+  font-size: 54px;
+  margin-bottom: 15px;
+}
+
+.welcome-card h2 {
+  color: #ffd166;
+  font-size: clamp(24px, 5vw, 34px);
+  margin: 0 0 12px;
+}
+
+.welcome-description {
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.welcome-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.welcome-card label {
+  text-align: left;
+  font-size: 15px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.welcome-card input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #475569;
+  border-radius: 12px;
+  background: #1e293b;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.welcome-card input:focus {
+  border-color: #ffd166;
+}
+
+.welcome-card form > button[type="submit"] {
+  margin-top: 12px;
+  padding: 17px;
+  border: none;
+  border-radius: 12px;
+  background: #ffd166;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.welcome-card form > button[type="submit"]:hover {
+  background: #ffe5a1;
+}
+
+.welcome-error {
+  color: #ff8291;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Выбор участника */
+
+.participant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.participant-option {
+  min-width: 0;
+  min-height: 125px;
+  padding: 10px 5px;
+  border: 2px solid #475569;
+  border-radius: 12px;
+  background: #24344c;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.participant-option:hover {
+  border-color: #ffd166;
+  transform: translateY(-3px);
+}
+
+.participant-option.selected {
+  border-color: #ffd166;
+  background: #3d432d;
+  box-shadow: 0 0 15px #ffd16644;
+}
+
+.participant-option img {
+  display: block;
+  width: 85px;
+  height: 85px;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto 7px;
+}
+
+.participant-option span {
+  font-size: 12px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.welcome-back {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .welcome-card {
+    padding: 24px 16px;
+  }
+
+  .participant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Christmas green actions */
+.welcome-card form > button[type="submit"]{background:linear-gradient(135deg,#31835f,#1c6249);color:white;border:1px solid #76c99e;border-radius:14px;box-shadow:0 8px 24px #052a1d55;transition:transform .2s,filter .2s;}
+.welcome-card form > button[type="submit"]:hover{background:#31835f;transform:translateY(-2px);}
+.welcome-back{padding:11px 18px;background:rgba(24,67,54,.85);color:#c9f3dc;border:1px solid #4d9475;border-radius:12px;}

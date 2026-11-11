@@ -1,0 +1,37 @@
+[
+  {
+    "id": "gbel",
+    "name": "Гбел",
+    "avatar": "/partc/zb/icon/37.webp"
+  },
+  {
+    "id": "ira",
+    "name": "Ирина",
+    "avatar": "/partc/ira/icon/43.webp"
+  },
+    {
+    "id": "bleg",
+    "name": "Блег",
+    "avatar": "/partc/ost/icon/16.webp"
+  },
+    {
+    "id": "maks",
+    "name": "Макс",
+    "avatar": "/partc/maks/icon/image.webp"
+  },
+    {
+    "id": "artjom",
+    "name": "Артем",
+    "avatar": "/partc/artjom/icon/image.webp"
+  },
+  {
+    "id": "ruslana",
+    "name": "Руслана",
+    "avatar": "/partc/ruslana/icon/rus.webp"
+  },
+  {
+    "id": "vika",
+    "name": "Вика",
+    "avatar": "/partc/vika/icon/24.webp"
+  }
+]

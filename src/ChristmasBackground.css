@@ -1,0 +1,152 @@
+
+.christmas-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      #243f42 0%,
+      #142b32 40%,
+      #0b1725 100%
+    );
+}
+
+/* Мягкое рождественское свечение */
+
+.christmas-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 50, 70, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(50, 220, 140, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 210, 90, 0.06),
+      transparent 50%
+    );
+}
+
+/* СНЕГ */
+
+.snow-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.snowflake {
+  position: absolute;
+  top: -15px;
+  border-radius: 50%;
+  background: white;
+
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.7);
+
+  animation-name: snowfall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  100% {
+    transform: translate3d(
+      var(--snow-drift),
+      110vh,
+      0
+    );
+  }
+}
+
+/* МЕМНЫЕ ФОТОГРАФИИ */
+
+.meme-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.floating-meme {
+  position: absolute;
+
+  object-fit: contain;
+  user-select: none;
+
+  filter:
+    drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+
+  animation-name: meme-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  will-change: transform;
+}
+
+@keyframes meme-float {
+  0% {
+    transform:
+      translate3d(-30px, -30px, 0)
+      rotate(var(--rotation))
+      scale(0.85);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        var(--drift-x),
+        var(--drift-y),
+        0
+      )
+      rotate(calc(var(--rotation) * -1))
+      scale(1.05);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        calc(var(--drift-x) * -1),
+        calc(var(--drift-y) * -1),
+        0
+      )
+      rotate(var(--rotation))
+      scale(0.9);
+  }
+}
+
+/* Уважение к настройкам уменьшения анимации */
+
+@media (prefers-reduced-motion: reduce) {
+  .snowflake,
+  .floating-meme {
+    animation: none;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .floating-meme {
+    max-width: 90px;
+    max-height: 90px;
+  }
+
+  .christmas-background {
+    opacity: 0.85;
+  }
+}

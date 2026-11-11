@@ -1,0 +1,47 @@
+
+[
+  {
+    "id": "avaria",
+    "title": "Новогодняя (♂ RIGHT VERSION ♂)Gachi",
+    "artist": "Дискотека Авария",
+    "file": "avaria.mp3",
+    "cover": "/music/covers/avaria.webp"
+  },
+  {
+    "id": "egg",
+    "title": "Снежинка упала мне на яичко",
+    "artist": "Новогодний джаз",
+    "file": "egg.mp3",
+    "cover": "/music/covers/egg.webp"
+  },
+  {
+    "id": "jingle",
+    "title": "Jingle Bells GACHI ♂ (RIGHT VERSION♂)GACHI EDITION(GACHI REMIX) CHRISTMAS MUSIC♂",
+    "artist": "One Horse Open Sleigh",
+    "file": "jingle.mp3",
+    "cover": "/music/covers/jingle.webp"
+  },
+  {
+    "id": "lchristmas",
+    "title": "Wham! - Last Christmas. (Gachi mix) ♂Right Version♂",
+    "artist": "Wham!",
+    "file": "lchristmas.mp3",
+    "cover": "/music/covers/lchristmas.webp"
+  },
+  {
+    "id": "alliwant",
+    "title": "All I Want For Christmas Is You (Gachi mix)",
+    "artist": "Mariah Carey",
+    "file": "alliwant.mp3",
+    "cover": "/music/covers/alliwant.webp"
+  },
+  {
+    "id": "wewish",
+    "title": "♂We Wish♂ You a ♂Van Darkholme♂ (Gachi Remix)",
+    "artist": "Kalafina",
+    "file": "wewish.mp3",
+    "cover": "/music/covers/wewish.webp"
+  }
+
+
+]

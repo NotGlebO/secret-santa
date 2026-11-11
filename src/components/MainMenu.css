@@ -1,0 +1,126 @@
+
+.main-menu {
+  width: min(100%, 900px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px auto 0;
+}
+
+.main-menu-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.main-menu-heading h2 {
+  margin: 0;
+  color: #ffd166;
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 900;
+}
+
+.main-menu-heading > span {
+  font-size: 26px;
+}
+
+.main-menu-subtitle {
+  margin: 15px 0 35px;
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.main-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.main-menu-card {
+  min-height: 320px;
+  padding: 35px 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  border: 2px solid #465672;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(45, 59, 84, 0.95),
+    rgba(20, 31, 49, 0.95)
+  );
+
+  color: white;
+  cursor: pointer;
+
+  box-shadow: 0 15px 35px #0005;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.main-menu-card:hover {
+  transform: translateY(-8px);
+  border-color: #ffd166;
+  box-shadow: 0 20px 45px #0008, 0 0 25px #ffd16633;
+}
+
+.main-menu-icon {
+  font-size: 75px;
+  line-height: 1.2;
+}
+
+.main-menu-title {
+  color: #ffd166;
+  font-size: 29px;
+  font-weight: 900;
+}
+
+.main-menu-description {
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.main-menu-action {
+  margin-top: 10px;
+  color: #ffd166;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .main-menu-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .main-menu-card {
+    min-height: 230px;
+    padding: 25px 20px;
+  }
+
+  .main-menu-icon {
+    font-size: 55px;
+  }
+
+  .main-menu-title {
+    font-size: 24px;
+  }
+}
+
+/* Christmas green cards and action buttons */
+.main-menu-card{border-color:#3f765f;background:linear-gradient(145deg,rgba(29,75,57,.96),rgba(14,36,34,.96));}
+.main-menu-card:hover{border-color:#8cdbac;box-shadow:0 20px 45px #0008,0 0 24px #3caa7750;}
+.main-menu-action{display:inline-flex;align-items:center;justify-content:center;margin-top:12px;padding:12px 20px;border:1px solid #80cda3;border-radius:12px;background:linear-gradient(135deg,#31835f,#1c6249);color:white;box-shadow:0 7px 18px #052a1d55;transition:transform .2s,filter .2s;}
+.main-menu-card:hover .main-menu-action{filter:brightness(1.12);transform:translateY(-2px);}
