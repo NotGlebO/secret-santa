@@ -6,7 +6,7 @@ import path from "node:path";
 import { randomInt } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { readdir } from "node:fs/promises";
-import { sendSantaEmail } from "./mailService.js";
+import { sendSantaEmail } from "../service/mailService.js";
 import { sendWishlistEmail } from "./wishlistMailService.js";
 
 const app = express();
