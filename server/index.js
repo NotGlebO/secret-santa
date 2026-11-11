@@ -10,10 +10,16 @@ import { sendSantaEmail } from "./mailService.js";
 import { sendWishlistEmail } from "./wishlistMailService.js";
 
 const app = express();
-const PORT = 3001;
+
+const PORT = Number(process.env.PORT) || 3001;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dataDir = path.resolve(__dirname, "../data");
+
+const dataDir = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : path.resolve(__dirname, "../data");
+
+fs.mkdirSync(dataDir, { recursive: true });
 
 const participantsFile = path.join(dataDir, "participants.json");
 const assignmentsFile = path.join(dataDir, "assignments.json");
@@ -581,6 +587,24 @@ app.get("/api/background-images", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+// Все /api маршруты должны быть объявлены выше
+
+app.use("/api", (req, res) => {
+  res.status(404).json({
+    error: "API endpoint not found"
+  });
+});
+
+// Собранный React
+const distDir = path.resolve(__dirname, "../dist");
+
+app.use(express.static(distDir));
+
+// Остальные маршруты открывают React
+app.get("/{*path}", (req, res) => {
+  res.sendFile(path.join(distDir, "index.html"));
 });
 
 app.listen(PORT, () => {

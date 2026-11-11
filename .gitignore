@@ -2,6 +2,7 @@ node_modules/
 dist/
 .env
 .env.*
+vitest.config.js
 !.env.example
 
 data/assignments.json
