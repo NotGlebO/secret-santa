@@ -1,24 +1,11 @@
 
-import nodemailer from "nodemailer";
 import "dotenv/config";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 20000,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
-});
+
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({
@@ -40,8 +27,7 @@ export async function sendSantaEmail(email, giver, recipient) {
   const giverName = escapeHtml(giver.name);
   const recipientName = escapeHtml(recipient.name);
 
-  await transporter.sendMail({
-    from: `"Secret Santa 🎅" <${process.env.SMTP_USER}>`,
+  await sendGmailEmail({
     to: email,
     subject: "🎄 Secret Santa — твой результат!",
 

@@ -1,20 +1,7 @@
-
-import nodemailer from "nodemailer";
+import { sendGmailEmail } from "./gmailClient.js";
 import "dotenv/config";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 20000,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
-});
+
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({
@@ -36,8 +23,7 @@ export async function sendWishlistEmail(
   const recipientName = escapeHtml(recipient.name);
   const wishes = escapeHtml(wishlist).replace(/\n/g, "<br>");
 
-  await transporter.sendMail({
-    from: `"Secret Santa 🎅" <${process.env.SMTP_USER}>`,
+  await sendGmailEmail({
     to: email,
     subject: `🎁 Вишлист обновлён — ${recipient.name}`,
 

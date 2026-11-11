@@ -4,6 +4,7 @@ dist/
 .env.*
 vitest.config.js
 !.env.example
+server/google-credentials.json
 
 data/assignments.json
 data/wishlists.json
