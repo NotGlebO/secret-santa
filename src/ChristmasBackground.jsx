@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./ChristmasBackground.css";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "";
 
 function random(min, max) {
   return Math.random() * (max - min) + min;

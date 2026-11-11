@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./Wishlist.css";
 
-const API_URL = "http://localhost:3001/api";
+const API_URL = "/api";
 
 export default function Wishlist({ userId, onBack }) {
   const [text, setText] = useState("");
