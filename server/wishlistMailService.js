@@ -4,8 +4,12 @@ import "dotenv/config";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
+  requireTLS: true,
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 20000,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
@@ -22,7 +26,12 @@ function escapeHtml(value) {
   })[char]);
 }
 
-export async function sendWishlistEmail(email, giver, recipient, wishlist) {
+export async function sendWishlistEmail(
+  email,
+  giver,
+  recipient,
+  wishlist
+) {
   const giverName = escapeHtml(giver.name);
   const recipientName = escapeHtml(recipient.name);
   const wishes = escapeHtml(wishlist).replace(/\n/g, "<br>");
@@ -31,11 +40,15 @@ export async function sendWishlistEmail(email, giver, recipient, wishlist) {
     from: `"Secret Santa 🎅" <${process.env.SMTP_USER}>`,
     to: email,
     subject: `🎁 Вишлист обновлён — ${recipient.name}`,
-    text:
-      `Привет, ${giver.name}!\n\n` +
-      `${recipient.name} обновил(а) свой вишлист:\n\n` +
-      `${wishlist}\n\n` +
-      "Это пожелания, а не обязательный список покупок. 🎄",
+
+    text: `Привет, ${giver.name}!
+
+${recipient.name} обновил(а) свой вишлист:
+
+${wishlist}
+
+Это пожелания, а не обязательный список покупок. 🎄`,
+
     html: `
       <div style="
         background:#0f172a;
@@ -45,7 +58,9 @@ export async function sendWishlistEmail(email, giver, recipient, wishlist) {
         font-family:Arial,sans-serif;
         border-radius:18px;
       ">
-        <h1 style="color:#ffd166;">🎄 SECRET SANTA 🎄</h1>
+        <h1 style="color:#ffd166;">
+          🎄 SECRET SANTA 🎄
+        </h1>
 
         <p>Привет, ${giverName}!</p>
         <p>У тебя новое сообщение от Санты!</p>
@@ -66,6 +81,7 @@ export async function sendWishlistEmail(email, giver, recipient, wishlist) {
             font-size:16px;
             line-height:1.8;
             overflow-wrap:anywhere;
+            white-space:normal;
           ">
             ${wishes}
           </p>
@@ -79,4 +95,6 @@ export async function sendWishlistEmail(email, giver, recipient, wishlist) {
       </div>
     `
   });
+
+  console.log(`📧 Wishlist email sent to ${email}`);
 }

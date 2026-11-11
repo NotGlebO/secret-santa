@@ -8,8 +8,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false,
+  requireTLS: true,
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 20000,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
@@ -40,6 +44,7 @@ export async function sendSantaEmail(email, giver, recipient) {
     from: `"Secret Santa 🎅" <${process.env.SMTP_USER}>`,
     to: email,
     subject: "🎄 Secret Santa — твой результат!",
+
     text: `Привет, ${giver.name}!
 
 🎁 Тебе выпал(а): ${recipient.name}
@@ -107,4 +112,6 @@ export async function sendSantaEmail(email, giver, recipient) {
       }
     ]
   });
+
+  console.log(`📧 Santa email sent to ${email}`);
 }
